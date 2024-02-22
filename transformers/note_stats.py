@@ -34,8 +34,6 @@ def transform(data, *args, **kwargs):
 
     # Results
     return pd.DataFrame([dict(
-        total_posts=(total_posts := data.count()['id']),
-        average_daily_posts=round(total_posts/7),
         most_active_instance=most_active_instance.user_host,
         most_active_instance_count=most_active_instance.note_count,
         most_active_user=f'@{most_active_user.user_username}@{most_active_user.user_host}',
@@ -49,8 +47,6 @@ def test_output(output, *args) -> None:
     Template code for testing the output of the block.
     """
     class Model(BaseModel):
-        total_posts: int
-        average_daily_posts: int
         most_active_instance: str
         most_active_instance_count: int
         most_active_user: str

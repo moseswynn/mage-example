@@ -21,10 +21,11 @@ def export_data_to_s3(df: DataFrame, **kwargs) -> None:
     config_profile = 'aws_us_west_2'
 
     bucket_name = 'magemoseswynn'
-    object_key = f'sharkey/note_stats/{datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H%M%S")}'
+    object_key = f'sharkey/note_stats/{datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H%M%S")}.csv'
 
     S3.with_config(ConfigFileLoader(config_path, config_profile)).export(
         df,
         bucket_name,
         object_key,
+        format='csv'
     )

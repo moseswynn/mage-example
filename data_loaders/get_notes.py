@@ -34,7 +34,7 @@ def get_notes(stop_date):
 
 @data_loader
 def load_data_from_api(*args, **kwargs):
-    stop_date = datetime.now(tz=timezone.utc) - timedelta(days=7)
+    stop_date = datetime.now(tz=timezone.utc) - timedelta(days=1)
     df = pd.json_normalize([note for note in get_notes(stop_date)], sep='_')[['id','createdAt','user_username','user_host']]
     # Change createdAt to a datetime object
     df['createdAt'] = pd.to_datetime(df['createdAt'])

@@ -3,63 +3,72 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - note_statistics
-  executor_config: null
+  - note_stats
+  executor_config:
+    cpu: 1024
+    memory: 2048
+    wait_timeout: 3600
   executor_type: ecs
   has_callback: false
   language: python
-  name: sharkey_notes_7d
-  retry_config: {}
+  name: get_notes
+  retry_config: null
   status: updated
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: sharkey_notes_7d
+  uuid: get_notes
 - all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks:
-  - write_note_stats_s3
-  executor_config: null
+  - write_note_stats
+  executor_config:
+    cpu: 1024
+    memory: 2048
+    wait_timeout: 3600
   executor_type: ecs
   has_callback: false
   language: python
-  name: note_statistics
-  retry_config: {}
+  name: note_stats
+  retry_config: null
   status: updated
   timeout: null
   type: transformer
   upstream_blocks:
-  - sharkey_notes_7d
-  uuid: note_statistics
+  - get_notes
+  uuid: note_stats
 - all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks: []
-  executor_config: null
+  executor_config:
+    cpu: 1024
+    memory: 2048
+    wait_timeout: 3600
   executor_type: ecs
   has_callback: false
   language: python
-  name: write_note_stats_s3
-  retry_config: {}
+  name: write_note_stats
+  retry_config: null
   status: updated
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - note_statistics
-  uuid: write_note_stats_s3
+  - note_stats
+  uuid: write_note_stats
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2024-02-21 14:38:53.020207+00:00'
+created_at: '2024-02-22 20:25:15.678323+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: sharkey_note_stats
+name: sharkey_stats
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -69,6 +78,6 @@ settings:
 spark_config: {}
 tags: []
 type: python
-uuid: sharkey_note_stats
+uuid: sharkey_stats
 variables_dir: /home/src/mage_data/default_repo
 widgets: []
