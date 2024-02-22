@@ -1,0 +1,4 @@
+connector_type: mongodb
+connection_str: "mongodb+srv://moses:{{ mage_secret_var('mongo_pw') }}@moseswynn.koefsjy.mongodb.net/?retryWrites=true&w=majority&appName=moseswynn" #Must be replica set and MongoVersion is higher than Mongo5.1
+database: "mageStreamExample"
+collection: "sampleCollection"
