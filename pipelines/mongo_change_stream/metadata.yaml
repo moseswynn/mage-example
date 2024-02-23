@@ -43,7 +43,7 @@ blocks:
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - mongo_listener
+  - format_change_event
   uuid: mongo_output
 cache_block_output_in_memory: false
 callbacks: []
